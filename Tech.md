@@ -1,12 +1,5 @@
 # RaW Library Technical Notes
 
-RWL1 design by PQ
-RWL2 design by PQ
-RWL1-ASM design by PQ
-RWL2-ASM design by PQ
-
-Copyright 2000 by PQ
-
 ### Notes:
 * All numbers here are Decimals
 * \*  means Optional
