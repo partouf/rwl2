@@ -13,9 +13,9 @@ Don't report bugs, tips & comments, because this is super old.
  - MMATCH.E	-->	Multi-Matching
 
 ## RWL Handling
- - TECH.TXT	-->	Technical information
+ - [TECH.TXT](Tech.md)	-->	Technical information
  - RWL2.E	-->	RWL1 & RWL2 Handling
- - INFO.TXT	-->	Documentation on RWL2.E
+ - [INFO.TXT](Info.md)	-->	Documentation on RWL2.E
 
 ## Demos
  - TEST1.EX	-->	Example: Test for CONTROL.RWL
