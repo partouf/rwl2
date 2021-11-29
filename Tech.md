@@ -1,23 +1,22 @@
---------------------------------------------------
-	RaW Library Technical Notes
+# RaW Library Technical Notes
 
-	    RWL1 design by PQ
-	    RWL2 design by PQ
-	  RWL1-ASM design by PQ
-	  RWL2-ASM design by PQ
+RWL1 design by PQ
+RWL2 design by PQ
+RWL1-ASM design by PQ
+RWL2-ASM design by PQ
 
-	  Copyright 2000 by PQ
---------------------------------------------------
+Copyright 2000 by PQ
 
-All numbers here are Decimals
-
-* Optional
+### Notes:
+* All numbers here are Decimals
+* \*  means Optional
 
 
-RWL File Structures
+# RWL File Structures
 
-RWL1
---------------------------------------------------
+## RWL1
+
+```
 Offset	Length	Description		Example
 --------------------------------------------------
 1	4	Header			"RWL1"
@@ -30,10 +29,10 @@ Offset	Length	Description		Example
 *6	8	2nd ProcName		"ShowMSE "
 *14	1	Length of procstring	6
 *15	[14]	Procedure String	{201,184,1,0,205,51}
---------------------------------------------------
+```
 
-RWL2
---------------------------------------------------
+## RWL2
+```
 Offset	Length	Description		Example
 --------------------------------------------------
 1	4	Header			"RWL2"
@@ -52,11 +51,11 @@ Offset	Length	Description		Example
 **33	1	Parameter Type		184
 *34	1	Length of procstring	2
 *35	[34]	Procedure String	{205,51}
---------------------------------------------------
+```
 
 
-Parameter Types (32b)
---------------------------------------------------
+## Parameter Types (32b)
+```
 ID	Name	Machine string	Meaning
 --------------------------------------------------
 176	AL	{176,0}		MOV AL,0
@@ -78,23 +77,24 @@ ID	Name	Machine string	Meaning
 189	BP	{189,0,0,0,0}	MOV EBP, #0000:0000
 190	SI	{190,0,0,0,0}	MOV ESI, #0000:0000
 191	DI	{191,0,0,0,0}	MOV EDI, #0000:0000
---------------------------------------------------
+```
 
 
-RWL-ASM Stucture
---------------------------------------------------
+## RWL-ASM Stucture
+```
 //		Commenting Inside & Outside Procedures
+```
 
-NON-ARGUMENTED PROCEDURES (RWL1-ASM & RWL2-ASM)
---------------------------------------------------
+### NON-ARGUMENTED PROCEDURES (RWL1-ASM & RWL2-ASM)
+```
 proc		Anounce Procedure folowed by
  [NAME]		Name, length<=8
  :		End of Procedure anouncement
 end proc	End of Procedure
+```
 
-
-ARGUMENTED PROCEDURES (RWL2-ASM)
---------------------------------------------------
+### ARGUMENTED PROCEDURES (RWL2-ASM)
+```
 proc		Anounce Procedure folowed by
  [NAME]		Name, length<=8
  (		Argument Anouncement
@@ -104,10 +104,10 @@ proc		Anounce Procedure folowed by
  )		End of Arguments
  :		End of Procedure anouncement
 end proc	End of Procedure
+```
 
-
-PREPROCESSOR TRANSLATIONS
---------------------------------------------------
+### PREPROCESSOR TRANSLATIONS
+```
 SYMBOL	MEANING		EG.		MEANING
 ---------------		--------------------------
 :=	MOV		AX:=1		MOV AX,1
@@ -116,9 +116,10 @@ SYMBOL	MEANING		EG.		MEANING
 
 ==	LEA		EAX==[EAX*2]	LEA EAX,[EAX*2]
 <>	XCHG		AX<>BX		XCHG AX,BX
+```
 
-PREPROCESSOR EQUATIONS
---------------------------------------------------
+### PREPROCESSOR EQUATIONS
+```
 STRUCTURE
 ---------
 (		Begin equation
@@ -127,9 +128,10 @@ STRUCTURE
  [X]		Value or name
 )		End equation
 [Name Label]	Jump if equation is true
+```
 
-EQUATIONS
----------
+### EQUATIONS
+```
 SYMBOL	MEANING
 ---------------
 =	JE	(Equal)
@@ -138,12 +140,14 @@ SYMBOL	MEANING
 <=	JBE	(Below or Equal)
 >	JA	(Above)
 >=	JAE	(Above or Equal)
+```
 
-MULTIPLE MEANING TRANSLATIONS
---------------------------------------------------
+### MULTIPLE MEANING TRANSLATIONS
+```
 SYMBOL	MEANING		EG.		MEANING
 ---------------		--------------------------
 ++	ADC		AX++BX		ADC AX,BX
 ++	INC		++BX		INC BX
 --	SBB		BX--AX		SBB BX,AX
 --	DEC		--AX		DEC AX
+```
